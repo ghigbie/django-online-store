@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ template_name }}</title>
+    {% block page_title %}
+
+    {% endblock %}
+    
+    {% if title %}
+    <title>{{ title }}</title>
+    {% endif %}
 </head>
 <body>
     <div class="container">
