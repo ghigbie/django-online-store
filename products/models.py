@@ -7,3 +7,15 @@ class Manufacturer(models.Model):
 
     def __str__(self):
         return self.name
+
+class Product(models.Model):
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, related_name="products")
+    name = models.CharField(max_length=120)
+    description = models.TextField(blank=True, null=True)
+    price = models.FloatField()
+    shipping_cost = models.FloatField()
+    quantity = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return self.name
+
