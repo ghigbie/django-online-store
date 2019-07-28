@@ -56,7 +56,9 @@ ROOT_URLCONF = 'onlinestore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'onlinestore/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
