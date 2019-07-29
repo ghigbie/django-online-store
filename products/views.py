@@ -19,7 +19,7 @@ def product_detail(request, pk):
         data = {
             'product': {
                 "name": product.name,
-                "manufacturer": product.Manufacturer.name,
+                "manufacturer": product.manufacturer.name,
                 "description": product.description,
                 "photo": product.photo.url,
                 "price": product.price,
