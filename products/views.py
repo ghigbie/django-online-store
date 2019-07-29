@@ -7,10 +7,36 @@ from .models import Product, Manufacturer
 def product_list(request):
     products = Product.objects.all()
     data = {
-         "products": list(products.values("pk", "name"))
+         "products": list(products.values())
     }
     response = JsonResponse(data)
     return response
+
+
+def product_detail(request, pk):
+    try:
+        product = Product.objects.get(pk=pk)
+        data = {
+            'product': {
+                "name": product.name,
+                "manufacturer": product.Manufacturer.name,
+                "description": product.description,
+                "photo": product.photo.url,
+                "price": product.price,
+                "shipping_cost": product.shipping_cost,
+                "quantity": product.quantity
+            }
+        }
+        response = JsonResponse(data)
+        return response
+    except Product.DoesNotExist:
+        response = JsonResponse({
+            "error": {
+                "code": 404,
+                "message": "product does not exist"
+            }},
+            status=404)
+        return response
 
 
 #BELOW IS FOR STANDARD DJANGO PRODUCT
