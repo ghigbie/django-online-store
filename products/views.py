@@ -7,7 +7,7 @@ from .models import Product, Manufacturer
 def product_list(request):
     products = Product.objects.all()
     data = {
-        "products": list(products.values("pk", "name"))
+         "products": list(products.values("pk", "name"))
     }
     response = JsonResponse(data)
     return response
