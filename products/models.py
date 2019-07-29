@@ -12,7 +12,7 @@ class Product(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, related_name="products")
     name = models.CharField(max_length=120)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    photo = models.ImageField(blank=True, null=True)
     price = models.FloatField()
     shipping_cost = models.FloatField()
     quantity = models.PositiveSmallIntegerField()

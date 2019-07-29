@@ -3,5 +3,5 @@ from .views import ProductDetailView, ProductListView
 
 urlpatterns = [
     path("", ProductListView.as_view(), name='product-list'),
-    path("products/<int:pk>/", ProductDetailView.as_view, name="product-detail")
+    path("products/<int:pk>/", ProductDetailView.as_view(), name="product-detail")
 ]
