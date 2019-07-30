@@ -29,6 +29,7 @@ def product_detail(request, pk):
         }
         response = JsonResponse(data)
         return response
+
     except Product.DoesNotExist:
         response = JsonResponse({
             "error": {
@@ -37,6 +38,14 @@ def product_detail(request, pk):
             }},
             status=404)
         return response
+
+def manufacturer_list(request):
+    manufacturers = Manufacturer.objects.all()
+    data: {
+       'manufacturers': data
+    }
+    response = JsonResponse(data)
+    return response
 
 
 #BELOW IS FOR STANDARD DJANGO PRODUCT
