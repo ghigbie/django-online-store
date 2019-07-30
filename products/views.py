@@ -41,7 +41,7 @@ def product_detail(request, pk):
 
 def manufacturer_detail(request, pk):
     try:
-        manufacturer = Manufacturer.objects.get(pk=Pk)
+        manufacturer = Manufacturer.objects.get(pk=pk)
         manufacturer_products = manufacturer.products.all()
         data = {
             'manufacturer' : {
