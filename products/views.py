@@ -63,7 +63,7 @@ def manufacturer_detail(request, pk):
 def manufacturer_list(request):
     manufacturers = Manufacturer.objects.all()
     data: {
-       'manufacturers': manufacturers
+       'manufacturers': list(manufacturers.values())
     }
     response = JsonResponse(data)
     return response
