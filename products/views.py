@@ -39,13 +39,35 @@ def product_detail(request, pk):
             status=404)
         return response
 
+def manufacturer_detail(request, pk):
+    try:
+        manufacturer = Manufacturer.objects.get(pk=Pk)
+        data = {
+            'manufacturer' : {
+                "name": manufacturer.name,
+                "location": manufacturer.location,
+                "active": manufacturer.active
+            }
+        }
+        response = JsonResponse(data)
+        return response
+    except Manufacturer.DoesNotExist:
+        reponse = JsonResponse({
+            "error": {
+                "code": 404,
+                "message:": "Manufacturer not found"
+            }},
+            status=404)
+        return response
+
 def manufacturer_list(request):
     manufacturers = Manufacturer.objects.all()
     data: {
-       'manufacturers': data
+       'manufacturers': manufacturers
     }
     response = JsonResponse(data)
     return response
+
 
 
 #BELOW IS FOR STANDARD DJANGO PRODUCT
