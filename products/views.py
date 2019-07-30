@@ -42,11 +42,13 @@ def product_detail(request, pk):
 def manufacturer_detail(request, pk):
     try:
         manufacturer = Manufacturer.objects.get(pk=Pk)
+        manufacturer_products = manufacturer.products.all()
         data = {
             'manufacturer' : {
                 "name": manufacturer.name,
                 "location": manufacturer.location,
-                "active": manufacturer.active
+                "active": manufacturer.active,
+                "products": list(manufacturer_products.values()),
             }
         }
         response = JsonResponse(data)
